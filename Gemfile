@@ -74,3 +74,4 @@ gem 'devise'
 gem 'carrierwave', '~> 1.0'
 gem 'figaro'
 gem 'carrierwave-aws'
+gem "mini_magick"
