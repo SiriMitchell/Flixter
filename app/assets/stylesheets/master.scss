@@ -1,5 +1,14 @@
 @import "bootstrap";
 
+@font-face {
+    font-family: 'qraxyregular';
+    src: url('qraxy-webfont.woff2') format('woff2'),
+         url('qraxy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .navbar {
   font-family: "helvetica Neue", Helvetica;
   font-weight: 200;
@@ -14,7 +23,7 @@
 }
 
 .hero {
-  background: image_url('hero.jpg') no-repeat center center fixed;
+  background: image_url('wig.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size:cover;
@@ -32,8 +41,9 @@ h1, h2, h3, h4, h5, h6, .navbar {
 }
 
 .frosty h1 {
-  font-family: "Helvetica Neue", Helvetica;
-  font-weight: 100;
+  font-family: "qraxyregular", serif;
+  font-size: 72px;
+  font-weight: 250;
   text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
 }
 
