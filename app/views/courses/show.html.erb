@@ -22,7 +22,7 @@
         <% if current_user.enrolled_in?(@courses) %>
           <h3 class="badge badge-info">You Are Enrolled!</h3>
         <% else %>
-          <% if @course.free? %>
+          <% if @courses.free? %>
             <%= link_to 'Enroll', course_enrollments_path(@courses), class: 'btn btn-primary', method: :post %>
           <% else %>
             <%= form_tag course_enrollments_path(@courses) do %>
@@ -55,7 +55,7 @@
           <%= section.title %>
         </h3>
         <div class="row">
-          <% section.lessons.each do |lesson| %>
+          <% section.lessons.rank(:row_order).each do |lesson| %>
             <div class="col-12 col-sm-6">
               <div class="lesson text-center">
                 <br />
