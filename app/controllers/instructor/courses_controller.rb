@@ -17,6 +17,7 @@ class Instructor::CoursesController < ApplicationController
 
   def show
     @courses = Course.new
+    @section = Section.new
     
   end
 
