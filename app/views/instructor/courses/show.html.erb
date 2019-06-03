@@ -46,12 +46,11 @@
   <br class="clr" />
 
   <div class="text-center">
-    <!------Button trigger modal------>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" date-target="#newSectionModal"> 
-      Add a new section..
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newSectionModal">
+      Add a new section...
     </button>
   </div>
-
 
   <ul class="sections">
     <% current_course.sections.rank(:row_order).each do |section| %>
@@ -99,20 +98,19 @@
 
 
 
-<!--------Modal -------->
-<div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="newSectionModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="mnewSectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">x</span>
+          <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title" id="newSectionModal">Add a new section</h4>
+        <h4 class="modal-title" id="newSectionModalLabel">Add a new section</h4>
       </div>
-
       <%= simple_form_for @section, url: instructor_course_sections_path(current_course) do |f| %>
         <div class="modal-body">
-          <%= f.input :title %>
+          <% f.input :title %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -122,6 +120,8 @@
     </div>
   </div>
 </div>
+
+
 
 
 
@@ -136,7 +136,7 @@
         <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
       </div>
 
-      <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm'} do |f| %>
+      <%= simple_form_for @lesson, url: "lessonUrl", html: {id: 'newLessonForm'} do |f| %>
         <div class="modal-body">
           <%= f.input :title %>
           <%= f.input :subtitle %>
