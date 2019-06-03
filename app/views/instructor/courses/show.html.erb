@@ -1,7 +1,8 @@
 <script>
   $(function() {
     $('.new-lesson-button').click(function( event ) {
-      alert( event.target );
+      var lessonUrl = $( event.target).data('/instructor/sections/3/lessons');
+      $('#newLessonForm').attr('action', lessonUrl);
     });
 
 
@@ -46,18 +47,20 @@
 
   <div class="text-center">
     <!------Button trigger modal------>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" date-target="#newSectionModal"> Add a new section..
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" date-target="#newSectionModal"> 
+      Add a new section..
     </button>
   </div>
 
 
   <ul class="sections">
     <% current_course.sections.rank(:row_order).each do |section| %>
-      <li update-url="<%instructor_section_path(section) %>" class="section-li">
-        <div class="header">
+      <li update-url="<%= instructor_section_path(section) %>" class="section-li">
+        <div class="header float-left">
           <span class="fa fa-ellipsis-v"></span>
           <%= section.title %>
         </div>
+
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg float-right new-lesson-button" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section) %>">
         New Lesson..
@@ -97,7 +100,7 @@
 
 
 <!--------Modal -------->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="newSectionModal" aria-hidden="true">
+<div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="newSectionModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -110,7 +113,6 @@
       <%= simple_form_for @section, url: instructor_course_sections_path(current_course) do |f| %>
         <div class="modal-body">
           <%= f.input :title %>
-          <%= f.submit "Add a section", class: 'btn btn-primary' %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -124,7 +126,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="newLessonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="newLessonModal" tabindex="-1" role="dialog" aria-labelledby="newLessonModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -134,7 +136,7 @@
         <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
       </div>
 
-      <%= simple_form_for @lesson, url: "#" do |f| %>
+      <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm'} do |f| %>
         <div class="modal-body">
           <%= f.input :title %>
           <%= f.input :subtitle %>
