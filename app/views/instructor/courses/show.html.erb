@@ -1,10 +1,9 @@
 <script>
   $(function() {
     $('.new-lesson-button').click(function( event ) {
-      var lessonUrl = $( event.target).data('/instructor/sections/3/lessons');
+      va lessonUrl = $( event.target).data('/instructor/sections/3/lessons');
       $('#newLessonForm').attr('action', lessonUrl);
     });
-
 
     $('.lessons').sortable({
       update: function( event, ui ) {
@@ -126,7 +125,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="newLessonModal" tabindex="-1" role="dialog" aria-labelledby="newLessonModalLabel" aria-hidden="true">
+<div class="modal fade" id="newLessonModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -136,7 +135,7 @@
         <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
       </div>
 
-      <%= simple_form_for @lesson, url: "lessonUrl", html: {id: 'newLessonForm'} do |f| %>
+      <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm'} do |f| %>
         <div class="modal-body">
           <%= f.input :title %>
           <%= f.input :subtitle %>
