@@ -1,7 +1,7 @@
 <script>
   $(function() {
     $('.new-lesson-button').click(function( event ) {
-      va lessonUrl = $( event.target).data('/instructor/sections/3/lessons');
+      var lessonUrl = $( event.target).data('lesson-url');
       $('#newLessonForm').attr('action', lessonUrl);
     });
 
@@ -98,7 +98,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="mnewSectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -109,7 +109,7 @@
       </div>
       <%= simple_form_for @section, url: instructor_course_sections_path(current_course) do |f| %>
         <div class="modal-body">
-          <% f.input :title %>
+          <%= f.input :title %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -135,7 +135,7 @@
         <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
       </div>
 
-      <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm'} do |f| %>
+      <%= simple_form_for @lesson, url: instructor_section_lessons_path(current_user), html: {id: 'newLessonForm'} do |f| %>
         <div class="modal-body">
           <%= f.input :title %>
           <%= f.input :subtitle %>

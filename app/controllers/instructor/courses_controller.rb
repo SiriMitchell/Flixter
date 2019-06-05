@@ -35,6 +35,11 @@ class Instructor::CoursesController < ApplicationController
     @current_course ||= Course.find(params[:id])
   end
 
+  helper_method :current_section
+  def current_section
+    @current_section ||= Section.find(params[:section_id])
+  end
+
   def course_params
     params.require(:course).permit(:title, :description, :cost, :image)
   end 
